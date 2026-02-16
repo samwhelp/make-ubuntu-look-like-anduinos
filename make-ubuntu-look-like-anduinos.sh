@@ -29,6 +29,7 @@ REF_GNOME_SHELL_EXTENSIONS_INSTALL=(
 	"date-menu-formatter@marcinjakubowski.github.com"
 	"user-theme@gnome-shell-extensions.gcampax.github.com"
 	"status-icons@gnome-shell-extensions.gcampax.github.com"
+	"gtk4-ding@smedius.gitlab.com"
 )
 
 
@@ -41,6 +42,7 @@ REF_GNOME_SHELL_EXTENSIONS_ENABLE=(
 	"date-menu-formatter@marcinjakubowski.github.com"
 	"user-theme@gnome-shell-extensions.gcampax.github.com"
 	"status-icons@gnome-shell-extensions.gcampax.github.com"
+	"gtk4-ding@smedius.gitlab.com"
 )
 
 
@@ -124,8 +126,8 @@ sys_package_install () {
 
 	echo
 	echo
-	echo sudo apt-get install -y gnome-shell gnome-shell-extension-manager gir1.2-gmenu-3.0 git sassc
-	sudo apt-get install -y gnome-shell gnome-shell-extension-manager gir1.2-gmenu-3.0 git sassc
+	echo sudo apt-get install -y gnome-shell gnome-tweaks gnome-shell-extension-manager gir1.2-gmenu-3.0 git wget sassc
+	sudo apt-get install -y gnome-shell gnome-tweaks gnome-shell-extension-manager gir1.2-gmenu-3.0 git wget sassc
 
 }
 
@@ -168,7 +170,7 @@ sys_theme_install_fluent_gtk_theme () {
 sys_theme_install_fluent_gtk_theme_via_git_clone () {
 
 
-	if [ -e "${HOME}/.themes/Fluent" ]; then
+	if [ -e "${HOME}/.themes/Fluent-round" ]; then
 		return 0
 	fi
 
@@ -189,12 +191,12 @@ sys_theme_install_fluent_gtk_theme_via_git_clone () {
 sys_theme_install_fluent_gtk_theme_via_wget_archive () {
 
 
-	if [ -e "${HOME}/.themes/Fluent" ]; then
+	if [ -e "${HOME}/.themes/Fluent-round" ]; then
 		return 0
 	fi
 
 
-	wget -c 'https://github.com/vinceliuice/Fluent-gtk-theme/archive/refs/heads/master.tar.gz' -O 'Fluent-gtk-theme-master.tar.gz'
+	wget -c 'https://github.com/vinceliuice/Fluent-gtk-theme/archive/refs/heads/master.tar.gz' -O '/tmp/Fluent-gtk-theme-master.tar.gz'
 
 
 
@@ -793,9 +795,8 @@ dconf load / << __EOF__
 
 
 [org/gnome/shell]
-#favorite-apps=['org.gnome.Nautilus.desktop', 'org.gnome.TextEditor.desktop', 'firefox.desktop', 'org.gnome.Console.desktop', 'org.gnome.Settings.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Extensions.desktop', 'com.mattjakeman.ExtensionManager.desktop', 'org.gnome.Software.desktop']
-#favorite-apps=['thunar.desktop', 'sublime_text.desktop', 'firefox.desktop', 'xfce4-terminal.desktop', 'org.gnome.Settings.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Extensions.desktop', 'com.mattjakeman.ExtensionManager.desktop', 'org.gnome.Software.desktop']
-favorite-apps=['org.gnome.Nautilus.desktop', 'org.gnome.TextEditor.desktop', 'firefox-esr.desktop', 'org.gnome.Ptyxis.desktop', 'org.gnome.Settings.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Extensions.desktop', 'com.mattjakeman.ExtensionManager.desktop', 'org.gnome.Software.desktop']
+favorite-apps=['org.gnome.Nautilus.desktop', 'org.gnome.TextEditor.desktop', 'firefox_firefox.desktop', 'org.gnome.Ptyxis.desktop', 'org.gnome.Settings.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Extensions.desktop', 'com.mattjakeman.ExtensionManager.desktop', 'org.gnome.Software.desktop']
+#favorite-apps=['org.gnome.Nautilus.desktop', 'org.gnome.TextEditor.desktop', 'firefox-esr.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Settings.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Extensions.desktop', 'com.mattjakeman.ExtensionManager.desktop', 'org.gnome.Software.desktop']
 
 
 
@@ -1228,7 +1229,7 @@ sys_gnome_shell_extensions_disable () {
 
 	for the_extension_id in ${the_extension_list[@]}; do
 		echo
-		echo gext enable "${the_extension_id}"
+		echo gext disable "${the_extension_id}"
 		gext disable "${the_extension_id}"
 		echo
 	done
