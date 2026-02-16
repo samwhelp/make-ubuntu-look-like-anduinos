@@ -122,8 +122,8 @@ sys_package_install () {
 
 	echo
 	echo
-	echo sudo apt-get install gnome-shell gnome-shell-extension-manager gir1.2-gmenu-3.0 git sassc
-	sudo apt-get install gnome-shell gnome-shell-extension-manager gir1.2-gmenu-3.0 git sassc
+	echo sudo apt-get install -y gnome-shell gnome-shell-extension-manager gir1.2-gmenu-3.0 git sassc
+	sudo apt-get install -y gnome-shell gnome-shell-extension-manager gir1.2-gmenu-3.0 git sassc
 
 }
 
@@ -155,6 +155,12 @@ mod_theme_master_install () {
 
 sys_theme_install_fluent_gtk_theme () {
 
+
+	if [ -e "${HOME}/.themes/Fluent" ]; then
+		return 0
+	fi
+
+
 	git clone https://github.com/vinceliuice/Fluent-gtk-theme /tmp/fluent-gtk-theme
 
 
@@ -169,6 +175,12 @@ sys_theme_install_fluent_gtk_theme () {
 }
 
 sys_theme_install_fluent_icon_theme () {
+
+
+	if [ -e "${HOME}/.local/share/icons/Fluent" ]; then
+		return 0
+	fi
+
 
 	git clone https://github.com/vinceliuice/Fluent-icon-theme /tmp/fluent-icon-theme
 
@@ -1039,6 +1051,16 @@ sys_gnome_shell_extensions_install () {
 		echo gext install "${the_extension_id}"
 		gext install "${the_extension_id}"
 		echo
+
+		echo
+		echo mkdir -p "${HOME}/.local/share/gnome-shell/extensions/${the_extension_id}/schemas"
+		mkdir -p "${HOME}/.local/share/gnome-shell/extensions/${the_extension_id}/schemas"
+		echo
+
+		echo
+		echo glib-compile-schemas "${HOME}/.local/share/gnome-shell/extensions/${the_extension_id}/schemas"
+		glib-compile-schemas "${HOME}/.local/share/gnome-shell/extensions/${the_extension_id}/schemas"
+		echo
 	done
 
 }
@@ -1053,11 +1075,6 @@ sys_gnome_shell_extensions_enable () {
 		echo
 		echo gext enable "${the_extension_id}"
 		gext enable "${the_extension_id}"
-		echo
-
-		echo
-		echo glib-compile-schemas "${HOME}/.local/share/gnome-shell/extensions/${the_extension_id}/schemas"
-		gext glib-compile-schemas "${HOME}/.local/share/gnome-shell/extensions/${the_extension_id}/schemas"
 		echo
 	done
 
@@ -1148,7 +1165,7 @@ hotkeys-overlay-combo='TEMPORARILY'
 intellihide=false
 isolate-workspaces=true
 panel-anchors='{"AUO-0x00000000":"MIDDLE","unknown-unknown":"MIDDLE"}'
-panel-element-positions='{"AUO-0x00000000":[{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"taskbar","visible":true,"position":"centerMonitor"},{"element":"showAppsButton","visible":false,"position":"stackedTL"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":true,"position":"stackedBR"}],"unknown-unknown":[{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"taskbar","visible":true,"position":"centerMonitor"},{"element":"showAppsButton","visible":false,"position":"stackedTL"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":true,"position":"stackedBR"}]}'
+panel-element-positions='{"AUO-0x00000000":[{"element":"showAppsButton","visible":false,"position":"stackedTL"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"taskbar","visible":true,"position":"centerMonitor"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":true,"position":"stackedBR"}],"unknown-unknown":[{"element":"showAppsButton","visible":false,"position":"stackedTL"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"taskbar","visible":true,"position":"centerMonitor"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":true,"position":"stackedBR"}]}'
 panel-lengths='{}'
 panel-positions='{}'
 panel-sizes='{}'
@@ -1294,13 +1311,13 @@ sys_python_pipx_install () {
 
 sys_python_pipx_install_for_ubuntu () {
 
-	sudo apt-get install pipx
+	sudo apt-get install -y pipx
 
 }
 
 sys_python_pipx_install_for_debian () {
 
-	sudo apt-get install pipx
+	sudo apt-get install -y pipx
 
 }
 
