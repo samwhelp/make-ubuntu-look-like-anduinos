@@ -23,7 +23,7 @@
 ## Howto
 
 
-### Howto download [make-ubuntu-look-like-anduinos.sh](https://github.com/samwhelp/make-ubuntu-look-like-anduinos/blob/main/make-ubuntu-look-like-anduinos.sh) and run [it](https://raw.githubusercontent.com/samwhelp/make-ubuntu-look-like-anduinos/refs/heads/main/make-ubuntu-look-like-anduinos.sh).
+### How to download [make-ubuntu-look-like-anduinos.sh](https://github.com/samwhelp/make-ubuntu-look-like-anduinos/blob/main/make-ubuntu-look-like-anduinos.sh) and run [it](https://raw.githubusercontent.com/samwhelp/make-ubuntu-look-like-anduinos/refs/heads/main/make-ubuntu-look-like-anduinos.sh).
 
 > run
 
