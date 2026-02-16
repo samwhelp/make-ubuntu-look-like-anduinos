@@ -1009,6 +1009,11 @@ sys_gnome_shell_extensions_enable () {
 		echo gext enable "${the_extension_id}"
 		gext enable "${the_extension_id}"
 		echo
+
+		echo
+		echo glib-compile-schemas "${HOME}/.local/share/gnome-shell/extensions/${the_extension_id}/schemas"
+		gext glib-compile-schemas "${HOME}/.local/share/gnome-shell/extensions/${the_extension_id}/schemas"
+		echo
 	done
 
 }
