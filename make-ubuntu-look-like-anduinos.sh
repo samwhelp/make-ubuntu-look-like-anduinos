@@ -423,6 +423,12 @@ mod_gnome_shell_layout_install () {
 
 }
 
+mod_gnome_shell_master_install () {
+
+	mod_gnome_shell_layout_install
+
+}
+
 
 ##
 ## ## Main
@@ -430,7 +436,7 @@ mod_gnome_shell_layout_install () {
 
 __main__ () {
 
-	mod_gnome_shell_layout_install
+	mod_gnome_shell_master_install
 
 }
 
