@@ -6,11 +6,13 @@
 #echo "run: ${0}"
 
 
+
+
 ##
 ## ## Link
 ##
-## * https://github.com/samwhelp/debian-gnome-shell-adjustment/blob/main/demo/scripts/layout/gnome-shell-layout-wincity/gnome-shell-layout-wincity.sh
-## * https://raw.githubusercontent.com/samwhelp/debian-gnome-shell-adjustment/refs/heads/main/demo/scripts/layout/gnome-shell-layout-wincity/gnome-shell-layout-wincity.sh
+## * https://github.com/samwhelp/make-ubuntu-look-like-anduinos/blob/main/make-ubuntu-look-like-anduinos.sh
+## * https://raw.githubusercontent.com/samwhelp/make-ubuntu-look-like-anduinos/refs/heads/main/make-ubuntu-look-like-anduinos.sh
 ##
 
 
