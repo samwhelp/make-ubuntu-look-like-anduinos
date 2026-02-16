@@ -47,6 +47,7 @@ REF_GNOME_SHELL_EXTENSIONS_DISABLE=(
 	"places-menu@gnome-shell-extensions.gcampax.github.com"
 	"window-list@gnome-shell-extensions.gcampax.github.com"
 	"dash-to-dock@micxgx.gmail.com"
+	"ubuntu-dock@ubuntu.com"
 )
 
 
@@ -1005,6 +1006,8 @@ sys_gnome_shell_extensions_disable () {
 
 sys_gnome_shell_extensions_config () {
 
+	sys_gnome_shell_extensions_config_for_dash_to_dock
+
 	sys_gnome_shell_extensions_config_for_dash_to_panel
 
 	sys_gnome_shell_extensions_config_for_arcmenu
@@ -1014,6 +1017,40 @@ sys_gnome_shell_extensions_config () {
 	sys_gnome_shell_extensions_config_for_blur_my_shell
 
 	return
+}
+
+sys_gnome_shell_extensions_config_for_dash_to_dock () {
+
+dconf load / << __EOF__
+
+
+[org/gnome/shell/extensions/dash-to-dock]
+apply-custom-theme=false
+autohide=false
+autohide-in-fullscreen=true
+background-color='#ffffff'
+background-opacity=0.80000000000000004
+click-action='cycle-windows'
+dash-max-icon-size=36
+dock-fixed=true
+dock-position='BOTTOM'
+extend-height=false
+isolate-locations=true
+middle-click-action='launch'
+scroll-action='cycle-windows'
+shift-click-action='previews'
+shift-middle-click-action='quit'
+shortcut=['']
+shortcut-text=''
+show-mounts=false
+show-show-apps-button=true
+show-trash=false
+show-windows-preview=false
+transparency-mode='DYNAMIC'
+
+
+__EOF__
+
 }
 
 sys_gnome_shell_extensions_config_for_dash_to_panel () {
