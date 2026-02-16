@@ -23,22 +23,24 @@
 ##
 
 REF_GNOME_SHELL_EXTENSIONS_INSTALL=(
-	"blur-my-shell@aunetx"
-	"arcmenu@arcmenu.com"
-	"date-menu-formatter@marcinjakubowski.github.com"
 	"dash-to-panel@jderose9.github.com"
+	"arcmenu@arcmenu.com"
+	"blur-my-shell@aunetx"
+	"date-menu-formatter@marcinjakubowski.github.com"
+	"user-theme@gnome-shell-extensions.gcampax.github.com"
+	"status-icons@gnome-shell-extensions.gcampax.github.com"
 )
 
 
 
 
 REF_GNOME_SHELL_EXTENSIONS_ENABLE=(
+	"dash-to-panel@jderose9.github.com"
+	"arcmenu@arcmenu.com"
+	"blur-my-shell@aunetx"
+	"date-menu-formatter@marcinjakubowski.github.com"
 	"user-theme@gnome-shell-extensions.gcampax.github.com"
 	"status-icons@gnome-shell-extensions.gcampax.github.com"
-	"blur-my-shell@aunetx"
-	"arcmenu@arcmenu.com"
-	"date-menu-formatter@marcinjakubowski.github.com"
-	"dash-to-panel@jderose9.github.com"
 )
 
 
@@ -157,6 +159,14 @@ mod_theme_master_install () {
 
 sys_theme_install_fluent_gtk_theme () {
 
+	#sys_theme_install_fluent_gtk_theme_via_git_clone
+
+	sys_theme_install_fluent_gtk_theme_via_wget_archive
+
+}
+
+sys_theme_install_fluent_gtk_theme_via_git_clone () {
+
 
 	if [ -e "${HOME}/.themes/Fluent" ]; then
 		return 0
@@ -166,17 +176,55 @@ sys_theme_install_fluent_gtk_theme () {
 	git clone https://github.com/vinceliuice/Fluent-gtk-theme /tmp/fluent-gtk-theme
 
 
+
+
 	cd /tmp/fluent-gtk-theme
 
+	./install.sh --tweaks noborder round --theme all
 
-	./install.sh -t all
+	cd "${OLDPWD}"
 
+}
+
+sys_theme_install_fluent_gtk_theme_via_wget_archive () {
+
+
+	if [ -e "${HOME}/.themes/Fluent" ]; then
+		return 0
+	fi
+
+
+	wget -c 'https://github.com/vinceliuice/Fluent-gtk-theme/archive/refs/heads/master.tar.gz' -O 'Fluent-gtk-theme-master.tar.gz'
+
+
+
+
+	cd /tmp
+
+	tar xf Fluent-gtk-theme-master.tar.gz
+
+	cd "${OLDPWD}"
+
+
+
+
+	cd /tmp/Fluent-gtk-theme-master
+
+	./install.sh --tweaks noborder round --theme all
 
 	cd "${OLDPWD}"
 
 }
 
 sys_theme_install_fluent_icon_theme () {
+
+	#sys_theme_install_fluent_icon_theme_via_git_clone
+
+	sys_theme_install_fluent_icon_theme_via_wget_archive
+
+}
+
+sys_theme_install_fluent_icon_theme_via_git_clone () {
 
 
 	if [ -e "${HOME}/.local/share/icons/Fluent" ]; then
@@ -187,16 +235,63 @@ sys_theme_install_fluent_icon_theme () {
 	git clone https://github.com/vinceliuice/Fluent-icon-theme /tmp/fluent-icon-theme
 
 
+
+
 	cd /tmp/fluent-icon-theme
 
+	./install.sh --all
 
-	./install.sh -a
+	cd "${OLDPWD}"
 
+
+
+
+	cd /tmp/fluent-icon-theme/cursors
+
+	./install.sh
 
 	cd "${OLDPWD}"
 
 }
 
+sys_theme_install_fluent_icon_theme_via_wget_archive () {
+
+
+	if [ -e "${HOME}/.local/share/icons/Fluent" ]; then
+		return 0
+	fi
+
+
+	wget -c 'https://github.com/vinceliuice/Fluent-icon-theme/archive/refs/heads/master.tar.gz' -O '/tmp/Fluent-icon-theme-master.tar.gz'
+
+
+
+
+	cd /tmp
+
+	tar xf Fluent-icon-theme-master.tar.gz
+
+	cd "${OLDPWD}"
+
+
+
+
+	cd /tmp/Fluent-icon-theme-master
+
+	./install.sh --all
+
+	cd "${OLDPWD}"
+
+
+
+
+	cd /tmp/Fluent-icon-theme-master/cursors
+
+	./install.sh
+
+	cd "${OLDPWD}"
+
+}
 
 sys_theme_install_wallpaper () {
 
