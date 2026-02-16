@@ -9,8 +9,8 @@
 ##
 ## ## Link
 ##
-## * https://github.com/samwhelp/anduinos-gnome-shell-adjustment/blob/main/demo/scripts/layout/gnome-shell-layout-wincity/gnome-shell-layout-wincity.sh
-## * https://raw.githubusercontent.com/samwhelp/anduinos-gnome-shell-adjustment/refs/heads/main/demo/scripts/layout/gnome-shell-layout-wincity/gnome-shell-layout-wincity.sh
+## * https://github.com/samwhelp/debian-gnome-shell-adjustment/blob/main/demo/scripts/layout/gnome-shell-layout-wincity/gnome-shell-layout-wincity.sh
+## * https://raw.githubusercontent.com/samwhelp/debian-gnome-shell-adjustment/refs/heads/main/demo/scripts/layout/gnome-shell-layout-wincity/gnome-shell-layout-wincity.sh
 ##
 
 
@@ -97,7 +97,6 @@ is_command_exist () {
 
 
 
-
 ##
 ## ## Model
 ##
@@ -105,6 +104,37 @@ is_command_exist () {
 
 
 
+##
+## ## Model / Package
+##
+
+mod_package_master_install () {
+
+	sys_package_install
+
+	sys_package_remove
+
+}
+
+sys_package_install () {
+
+	echo
+	echo
+	echo sudo apt-get install gnome-shell gnome-shell-extension-manager gir1.2-gmenu-3.0 git sassc
+	sudo apt-get install gnome-shell gnome-shell-extension-manager gir1.2-gmenu-3.0 git sassc
+
+}
+
+sys_package_remove () {
+
+	return 0
+
+	echo
+	echo
+	echo sudo apt-get remove gnome-shell-extension-ubuntu-dock
+	sudo apt-get remove gnome-shell-extension-ubuntu-dock
+
+}
 
 
 
@@ -938,7 +968,6 @@ mod_gnome_shell_master_config_install () {
 
 
 
-
 ##
 ##
 ################################################################################
@@ -1077,6 +1106,8 @@ scroll-panel-action='SWITCH_WORKSPACE'
 shortcut=['<Super>0']
 shortcut-text='<Super>0'
 show-window-previews=false
+stockgs-keep-dash=false
+stockgs-keep-top-panel=false
 taskbar-locked=false
 window-preview-title-position='TOP'
 
@@ -1110,7 +1141,7 @@ override-menu-theme=false
 position-in-panel='Center'
 prefs-visible-page=0
 searchbar-default-top-location='Bottom'
-show-activities-button=false
+show-activities-button=true
 vert-separator=true
 
 
@@ -1195,9 +1226,9 @@ mod_python_pipx_install () {
 
 sys_python_pipx_install () {
 
-	sys_python_pipx_install_for_ubuntu
+	#sys_python_pipx_install_for_ubuntu
 
-	#sys_python_pipx_install_for_debian
+	sys_python_pipx_install_for_debian
 
 	#sys_python_pipx_install_for_fedora
 
@@ -1329,6 +1360,8 @@ mod_gnome_shell_master_layout_install () {
 }
 
 mod_gnome_shell_master_install () {
+
+	mod_package_master_install
 
 	mod_gnome_shell_master_config_install
 
