@@ -147,6 +147,8 @@ sys_package_remove () {
 
 mod_theme_master_install () {
 
+	sys_theme_install_wallpaper
+
 	sys_theme_install_fluent_gtk_theme
 
 	sys_theme_install_fluent_icon_theme
@@ -189,6 +191,49 @@ sys_theme_install_fluent_icon_theme () {
 
 
 	./install.sh -a
+
+
+	cd "${OLDPWD}"
+
+}
+
+
+sys_theme_install_wallpaper () {
+
+
+	if [ -e "/usr/share/backgrounds/Fluent-building-night.png" ]; then
+		return 0
+	fi
+
+
+	echo
+	echo sudo mkdir -p "/usr/share/backgrounds"
+	echo
+	sudo mkdir -p "/usr/share/backgrounds"
+
+
+	cd "/usr/share/backgrounds"
+
+
+	echo
+	echo sudo wget -c "https://raw.githubusercontent.com/Anduin2017/AnduinOS/refs/heads/1.5/src/mods/23-wallpaper-mod/Fluent-building-night.png" -O "./Fluent-building-night.png"
+	echo
+	sudo wget -c "https://raw.githubusercontent.com/Anduin2017/AnduinOS/refs/heads/1.5/src/mods/23-wallpaper-mod/Fluent-building-night.png" -O "./Fluent-building-night.png"
+
+
+	echo
+	echo sudo wget -c "https://raw.githubusercontent.com/Anduin2017/AnduinOS/refs/heads/1.5/src/mods/23-wallpaper-mod/Fluent-building-light.png" -O "./Fluent-building-light.png"
+	echo
+	sudo wget -c "https://raw.githubusercontent.com/Anduin2017/AnduinOS/refs/heads/1.5/src/mods/23-wallpaper-mod/Fluent-building-light.png" -O "./Fluent-building-light.png"
+
+
+	sudo ln -sf Fluent-building-night.png next.png
+
+	sudo ln -sf next.png default.png
+
+	sudo ln -sf next.png default-login.png
+
+	sudo ln -sf next.png default-grub.png
 
 
 	cd "${OLDPWD}"
@@ -730,12 +775,12 @@ dconf load / << __EOF__
 
 [org/gnome/desktop/background]
 picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/default.jpg'
-picture-uri-dark='file:///usr/share/backgrounds/default.jpg'
+picture-uri='file:///usr/share/backgrounds/default.png'
+picture-uri-dark='file:///usr/share/backgrounds/default.png'
 
 
 [org/gnome/desktop/screensaver]
-picture-uri='file:///usr/share/backgrounds/default-login.jpg'
+picture-uri='file:///usr/share/backgrounds/default-login.png'
 
 
 __EOF__
