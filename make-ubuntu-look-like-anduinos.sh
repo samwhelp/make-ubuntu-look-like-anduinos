@@ -142,6 +142,51 @@ sys_package_remove () {
 
 
 ##
+## ## Model / Theme
+##
+
+mod_theme_master_install () {
+
+	sys_theme_install_fluent_gtk_theme
+
+	sys_theme_install_fluent_icon_theme
+
+}
+
+sys_theme_install_fluent_gtk_theme () {
+
+	git clone https://github.com/vinceliuice/Fluent-gtk-theme /tmp/fluent-gtk-theme
+
+
+	cd /tmp/fluent-gtk-theme
+
+
+	./install.sh -t all
+
+
+	cd "${OLDPWD}"
+
+}
+
+sys_theme_install_fluent_icon_theme () {
+
+	git clone https://github.com/vinceliuice/Fluent-icon-theme /tmp/fluent-icon-theme
+
+
+	cd /tmp/fluent-icon-theme
+
+
+	./install.sh -a
+
+
+	cd "${OLDPWD}"
+
+}
+
+
+
+
+##
 ## ## Model / Tool
 ##
 
@@ -1373,6 +1418,8 @@ mod_gnome_shell_master_install () {
 	mod_gnome_shell_master_config_install
 
 	mod_gnome_shell_master_layout_install
+
+	mod_theme_master_install
 
 	sys_tips_on_done
 
