@@ -125,8 +125,8 @@ mod_package_master_install () {
 sys_package_install () {
 
 	echo
-	echo
 	echo sudo apt-get install -y gnome-shell gnome-tweaks gnome-shell-extension-manager gir1.2-gmenu-3.0 git wget sassc
+	echo
 	sudo apt-get install -y gnome-shell gnome-tweaks gnome-shell-extension-manager gir1.2-gmenu-3.0 git wget sassc
 
 }
@@ -136,8 +136,8 @@ sys_package_remove () {
 	return 0
 
 	echo
-	echo
 	echo sudo apt-get remove gnome-shell-extension-ubuntu-dock
+	echo
 	sudo apt-get remove gnome-shell-extension-ubuntu-dock
 
 }
