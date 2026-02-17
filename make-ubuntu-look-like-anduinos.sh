@@ -151,6 +151,8 @@ sys_package_remove () {
 
 mod_theme_master_install () {
 
+	sys_theme_install_logo
+
 	sys_theme_install_wallpaper
 
 	sys_theme_install_fluent_gtk_theme
@@ -334,6 +336,28 @@ sys_theme_install_wallpaper () {
 
 
 	cd "${OLDPWD}"
+
+}
+
+sys_theme_install_logo () {
+
+
+	if [ -e "/usr/share/images/anduinos/logo.svg" ]; then
+		return 0
+	fi
+
+
+	echo
+	echo sudo mkdir -p "/usr/share/images/anduinos"
+	echo
+	sudo mkdir -p "/usr/share/images/anduinos"
+
+
+	echo
+	echo sudo wget -c "https://raw.githubusercontent.com/Anduin2017/AnduinOS/47ef341b4ab9119905e3abcfd1949d718698ac14/src/mods/30-gnome-extension-arcmenu-patch/logo.svg" -O "/usr/share/images/anduinos/logo.svg"
+	echo
+	sudo wget -c "https://raw.githubusercontent.com/Anduin2017/AnduinOS/47ef341b4ab9119905e3abcfd1949d718698ac14/src/mods/30-gnome-extension-arcmenu-patch/logo.svg" -O "/usr/share/images/anduinos/logo.svg"
+
 
 }
 
@@ -1344,6 +1368,7 @@ force-menu-location='Off'
 hide-overview-on-startup=false
 hotkey-open-primary-monitor=false
 #menu-button-icon='start-here'
+menu-button-icon='/usr/share/images/anduinos/logo.svg'
 menu-item-grid-icon-size='Default'
 menu-item-icon-size='Large'
 menu-layout='Whisker'
