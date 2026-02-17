@@ -7,13 +7,16 @@
 
 ## Home
 
-> [make-ubuntu-look-like-anduinos](https://samwhelp.github.io/make-ubuntu-look-like-anduinos/)
+| Link | GitHub |
+| ---- | ------ |
+| [make-ubuntu-look-like-anduinos](https://samwhelp.github.io/make-ubuntu-look-like-anduinos/) | [GitHub](https://github.com/samwhelp/make-ubuntu-look-like-anduinos) |
 
 
 
 
 ## Subject
 
+* [Keybind](https://github.com/samwhelp/make-ubuntu-look-like-anduinos/blob/main/keybind.md)
 * [Howto](#howto)
 * [Extension](#extension)
 * [Link](#link)
