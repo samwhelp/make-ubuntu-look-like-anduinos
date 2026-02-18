@@ -4,7 +4,7 @@
 
 * [Requirement for Install Gnome Extensions](#requirement-for-install-gnome-extensions)
 * [Requirement for ArcMenu](#requirement-for-arcmenu)
-* [Requirement for Install fluent-gtk-theme](#requirement for-install-fluent-gtk-theme)
+* [Requirement for Install fluent-gtk-theme](#requirement-for-install-fluent-gtk-theme)
 
 
 
