@@ -57,6 +57,8 @@ sudo apt-get install gir1.2-gmenu-3.0
 
 ## Requirement for Install fluent-gtk-theme
 
+> run to install gir1.2-gmenu-3.0 at debian
+
 ``` sh
 sudo apt-get install sassc
 ```
