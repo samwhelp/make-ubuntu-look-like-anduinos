@@ -11,10 +11,10 @@
 
 ## Requirement for Install Gnome Extensions
 
-| Requirement | Note | Installer |
-| ----------- | ---- | --------- |
-| [pipx](https://github.com/pypa/pipx) | for install gnome-extensions-cli | [Installer](./gnome-shell-layout-basic/installer/python-pipx/install.sh) |
-| [gnome-extensions-cli](https://github.com/essembeh/gnome-extensions-cli) | for install extension | [Installer](./gnome-shell-layout-basic/installer/gnome-extensions-cli/install.sh) |
+| Requirement | Note |
+| ----------- | ---- |
+| [pipx](https://github.com/pypa/pipx) | for install gnome-extensions-cli |
+| [gnome-extensions-cli](https://github.com/essembeh/gnome-extensions-cli) | for install extension |
 
 > run to install [pipx](https://packages.debian.org/stable/pipx) at debian
 
