@@ -2254,6 +2254,20 @@ sys_gnome_shell_extensions_disable () {
 		echo
 	done
 
+	##
+	## ## disable ubuntu dock
+	##
+	sys_gnome_shell_extensions_disable_ubuntu_dock
+
+}
+
+sys_gnome_shell_extensions_disable_ubuntu_dock () {
+
+	echo
+	echo gnome-extensions disable ubuntu-dock@ubuntu.com
+	gnome-extensions disable ubuntu-dock@ubuntu.com
+	echo
+
 }
 
 
